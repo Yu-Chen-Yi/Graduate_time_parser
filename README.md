@@ -18,3 +18,4 @@ x == 3 : 三到四年畢業 </br>
 x >= 4 : 四年以上畢業 </br>
 
 僅供參考
+![image](https://github.com/Yu-Chen-Yi/Graduate_time_parser/assets/64921305/fab77970-4172-4589-a067-f73102cc5570)
