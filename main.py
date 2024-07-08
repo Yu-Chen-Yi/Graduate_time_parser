@@ -1,5 +1,4 @@
 from controller import lab_census_system
-from controller import verbose
 
 if __name__=="__main__":
     # handle user input
@@ -17,7 +16,3 @@ if __name__=="__main__":
     print(f"{res[2]}\t位第三年畢業")
     print(f"{res[3]}\t位第四年畢業")
     print(f"{res[4]}\t位第五年以上畢業")
-    # 顯示口試時間詳情（將i代替Student傳入，藉此減少多餘搜尋的工作量）
-#    verbose.show(LCS.name, LCS.sample_count, LCS.result)
-    V = verbose.VerboseBooster(name, sample_count, res, verbose_input)
-    V.show()

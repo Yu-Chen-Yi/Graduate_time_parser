@@ -19,11 +19,10 @@ class LabCensusSystem:
         print("-----------------Searching...-----------------")
 
         # 開啟url
-        url = 'http://etd.lib.nctu.edu.tw/cgi-bin/gs32/gsweb.cgi/login?o=dwebmge'
+        url = 'http://etd.lib.nycu.edu.tw/cgi-bin/gs32/gsweb.cgi/login?o=dwebmge'
         browser = mechanicalsoup.StatefulBrowser()
         browser.open(url)
         browser.select_form('form[name="main"]')
-
         # 填入資料並開始搜尋
         browser["qs0"] = self.name
         browser["dcf"] = "ad"
@@ -111,6 +110,25 @@ class LabCensusSystem:
                 student_name = access.body.form.div.table.tbody.tr.td.table.find("th",text="作者(中文):").find_next_sibling().get_text()
             # 畢業年 - 入學年
             calculate = int(grad_year) - int(enter_year)
+
+            if number[-6:-3] == '256':
+                part_time = '在職班'
+            elif number[-6:-3] == '226':
+                part_time = '光電所'
+            elif number[-6:-3] == '232':
+                part_time = '照明所'
+            else:
+                part_time = ''
+            if calculate == 0:
+                print(f""+student_name+f" "+part_time+f" : {calculate+1}年畢業 好孩子! ")
+            if calculate == 1:
+                print(f""+student_name+f" "+part_time+f" : {calculate+1}年畢業 好孩子! ")
+            if calculate == 2:
+                print(f""+student_name+f" "+part_time+f" : {calculate+1}年畢業 QQ ")
+            if calculate == 3:
+                print(f""+student_name+f" "+part_time+f" : {calculate+1}年畢業 超QQ ")
+            if calculate == 4:
+                print(f""+student_name+f" "+part_time+f" : {calculate+1}年畢業 巨QQ ")
             if calculate == 0:
                 self.result[0] += 1
                 new = {student_name:[int(enter_year),"1"]}
